@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export interface AirQualityData {
   timestamp: string;
   location: string;
@@ -34,4 +36,11 @@ export interface ChatMessage {
   role: "user" | "assistant";
   content: string;
   timestamp: Date;
+}
+
+export interface FeatureCard {
+  icon: ReactElement;
+  color: string;
+  title: string;
+  description: string;
 }
