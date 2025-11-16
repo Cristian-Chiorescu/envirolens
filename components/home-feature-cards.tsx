@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { FeatureCard } from "@/app/types";
+import { FeatureCard } from "@/types";
 import { ChartColumnBig, Lightbulb, FileText } from "lucide-react";
 
 const featureCardList: FeatureCard[] = [

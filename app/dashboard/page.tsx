@@ -15,7 +15,7 @@ import RegulatoryContext from "@/components/regulatory-context";
 import LoadingState from "@/components/loading-state";
 import ErrorState from "@/components/error-state";
 import FloatingAIChat from "@/components/floating-ai-chat";
-import { AirQualityData } from "../types";
+import { AirQualityData } from "../../types";
 import { formatDate } from "../lib/utils";
 
 export default function DashboardPage() {

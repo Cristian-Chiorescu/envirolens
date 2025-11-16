@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { AirQualityData } from "@/app/types";
+import { AirQualityData } from "@/types";
 
 interface ChatMessage {
   role: "user" | "assistant";

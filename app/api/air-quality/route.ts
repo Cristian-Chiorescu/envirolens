@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import type { AirQualityData } from "@/app/types";
+import type { AirQualityData } from "@/types";
 
 const AQICN_TOKEN = process.env.AQICN_API_TOKEN || "";
 
