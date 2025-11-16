@@ -23,7 +23,6 @@ export async function POST(req: Request) {
     const completion = await openai.chat.completions.create({
       model: "gpt-5-nano",
       reasoning_effort: "minimal",
-      max_completion_tokens: 180,
 
       messages: [
         {
