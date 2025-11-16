@@ -1,11 +1,16 @@
-import Image from "next/image";
+// components/DashboardLayout.tsx (update the nav section)
+
 import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation"; // ADD THIS
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname(); // ADD THIS
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -31,13 +36,21 @@ export default function DashboardLayout({
             <nav className="flex gap-6">
               <Link
                 href="/dashboard"
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                className={`text-sm font-medium transition decoration-2 underline-offset-4 ${
+                  pathname === "/dashboard"
+                    ? "text-primary underline"
+                    : "text-muted-foreground hover:text-primary"
+                }`}
               >
                 Dashboard
               </Link>
               <Link
                 href="/projects"
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                className={`text-sm font-medium transition decoration-2 underline-offset-4 ${
+                  pathname === "/projects"
+                    ? "text-primary underline"
+                    : "text-muted-foreground hover:text-primary"
+                }`}
               >
                 Projects
               </Link>
@@ -46,7 +59,8 @@ export default function DashboardLayout({
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">{children}</main>
+      {/* Main Content */}
+      <main className="container mx-auto px-8 md:px-4 py-8">{children}</main>
     </div>
   );
 }

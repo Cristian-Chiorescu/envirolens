@@ -9,9 +9,9 @@ export default function AQIStatusBanner({ aqi, status }: AQIStatusBannerProps) {
   // Determine background color based on AQI value
   const bgColor =
     aqi <= 50
-      ? "bg-accent/10 border-accent/20"
-      : aqi <= 100
       ? "bg-secondary/10 border-secondary/20"
+      : aqi <= 100
+      ? "bg-accent/10 border-accent/20"
       : "bg-destructive/10 border-destructive/20";
 
   // Determine icon based on AQI value
@@ -31,7 +31,7 @@ export default function AQIStatusBanner({ aqi, status }: AQIStatusBannerProps) {
   return (
     <div className={`rounded-xl border p-6 ${bgColor}`}>
       <div className="flex items-start gap-4">
-        <div className="w-12 h-12 rounded-full bg-background/50 flex items-center justify-center shrink-0">
+        <div className="w-12 h-12 rounded-full bg-background/50 border border-accent-foreground/20 flex items-center justify-center shrink-0">
           <span className="text-2xl">{icon}</span>
         </div>
         <div className="flex-1">
