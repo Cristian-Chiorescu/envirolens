@@ -14,6 +14,8 @@ import PollutantChart from "@/components/pollutant-chart";
 import RegulatoryContext from "@/components/regulatory-context";
 import LoadingState from "@/components/loading-state";
 import ErrorState from "@/components/error-state";
+import AIChat from "@/components/ai-chat";
+import FloatingAIChat from "@/components/floating-ai-chat";
 import { AirQualityData } from "../types";
 import { formatDate } from "../lib/utils";
 
@@ -123,6 +125,9 @@ export default function DashboardPage() {
 
       {/* Regulatory Context */}
       <RegulatoryContext />
+
+      {/* Floating AI Chat - REPLACE the old section with this */}
+      <FloatingAIChat airQualityData={data} />
     </DashboardLayout>
   );
 }

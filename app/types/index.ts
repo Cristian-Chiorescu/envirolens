@@ -35,7 +35,6 @@ export interface ConsultingProject {
 export interface ChatMessage {
   role: "user" | "assistant";
   content: string;
-  timestamp: Date;
 }
 
 export interface FeatureCard {
