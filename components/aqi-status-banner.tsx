@@ -9,9 +9,9 @@ export default function AQIStatusBanner({ aqi, status }: AQIStatusBannerProps) {
   // Determine background color based on AQI value
   const bgColor =
     aqi <= 50
-      ? "bg-secondary/10 border-secondary/20"
-      : aqi <= 100
       ? "bg-accent/10 border-accent/20"
+      : aqi <= 100
+      ? "bg-muted/10 border-muted"
       : "bg-destructive/10 border-destructive/20";
 
   // Determine icon based on AQI value

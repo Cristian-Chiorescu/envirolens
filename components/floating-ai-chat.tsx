@@ -3,6 +3,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { AirQualityData } from "@/types";
+import { consultingProjects } from "@/data/consultingProjects";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -46,12 +47,22 @@ export default function FloatingAIChat({
     setIsLoading(true);
 
     try {
+      // Filter projects relevant to current AQI
+      const [min, max] = [0, 300]; // Default range
+      const relevantProjects = consultingProjects.filter((project) => {
+        const [pMin, pMax] = project.relevantAQIRange.split("-").map(Number);
+        return airQualityData.aqi >= pMin && airQualityData.aqi <= pMax;
+      });
+
       const response = await fetch("/api/ai-assistant", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: updatedMessages, // 👈 send full history
-          context: airQualityData, // 👈 your AQ data
+          context: {
+            airQuality: airQualityData,
+            relevantProjects: relevantProjects, // 👈 your AQ data}
+          },
         }),
       });
 
@@ -186,11 +197,11 @@ export default function FloatingAIChat({
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-primary">•</span>
-                      <span>"Explain TIER compliance"</span>
+                      <span>"Show me similar past projects"</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-primary">•</span>
-                      <span>"What regulations apply?"</span>
+                      <span>"Explain TIER compliance"</span>
                     </li>
                   </ul>
                 </div>

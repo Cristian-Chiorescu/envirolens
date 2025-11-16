@@ -14,7 +14,6 @@ import PollutantChart from "@/components/pollutant-chart";
 import RegulatoryContext from "@/components/regulatory-context";
 import LoadingState from "@/components/loading-state";
 import ErrorState from "@/components/error-state";
-import FloatingAIChat from "@/components/floating-ai-chat";
 import { AirQualityData } from "../../types";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
@@ -119,7 +118,7 @@ export default function DashboardPage() {
 
       {/* Link to Projects */}
       <Link href="/projects">
-        <div className="bg-primary/10 border border-primary/20 rounded-xl p-6 mb-8 hover:bg-primary/20 transition duration-300 cursor-pointer group">
+        <div className="bg-secondary/5 border border-secondary/20 rounded-xl p-6 mb-8 hover:bg-secondary/15 transition duration-300 cursor-pointer group">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-lg font-semibold text-foreground mb-2 flex items-center gap-2">
@@ -168,9 +167,6 @@ export default function DashboardPage() {
 
       {/* Regulatory Context */}
       <RegulatoryContext />
-
-      {/* Floating AI Chat - REPLACE the old section with this */}
-      <FloatingAIChat airQualityData={data} />
     </DashboardLayout>
   );
 }

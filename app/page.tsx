@@ -35,7 +35,7 @@ export default function Home() {
           <HomeFeatureCards></HomeFeatureCards>
 
           {/* Bottom Info Section. Also replace with shadcn card*/}
-          <div className="bg-muted/50 border border-border rounded-xl p-8 text-center">
+          <div className="bg-secondary/10 border border-border rounded-xl p-8 text-center">
             <h2 className="text-2xl font-semibold mb-4 text-foreground">
               Built for Environmental Consultants
             </h2>
