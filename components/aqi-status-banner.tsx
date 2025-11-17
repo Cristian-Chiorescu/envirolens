@@ -1,5 +1,7 @@
 // components/AQIStatusBanner.tsx
 
+import { Check, TriangleAlert, OctagonAlert } from "lucide-react";
+
 interface AQIStatusBannerProps {
   aqi: number;
   status: string;
@@ -15,7 +17,14 @@ export default function AQIStatusBanner({ aqi, status }: AQIStatusBannerProps) {
       : "bg-destructive/10 border-destructive/20";
 
   // Determine icon based on AQI value
-  const icon = aqi <= 50 ? "✓" : "⚠";
+  const icon =
+    aqi <= 50 ? (
+      <Check></Check>
+    ) : aqi <= 100 ? (
+      <TriangleAlert></TriangleAlert>
+    ) : (
+      <OctagonAlert></OctagonAlert>
+    );
 
   // Get health message based on AQI value
   const getMessage = () => {

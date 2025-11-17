@@ -3,6 +3,7 @@
 import {
   BarChart,
   Bar,
+  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -13,6 +14,7 @@ import {
 interface PollutantDataPoint {
   name: string;
   value: number;
+  color: string;
 }
 
 interface PollutantChartProps {
@@ -28,11 +30,11 @@ interface PollutantChartProps {
 export default function PollutantChart({ pollutants }: PollutantChartProps) {
   // Transform pollutant object into array format for chart
   const chartData: PollutantDataPoint[] = [
-    { name: "PM2.5", value: pollutants.pm25 },
-    { name: "PM10", value: pollutants.pm10 },
-    { name: "NO₂", value: pollutants.no2 },
-    { name: "O₃", value: pollutants.o3 },
-    { name: "CO", value: pollutants.co },
+    { name: "PM2.5", value: pollutants.pm25, color: "var(--chart-1)" },
+    { name: "PM10", value: pollutants.pm10, color: "var(--chart-2)" },
+    { name: "NO₂", value: pollutants.no2, color: "var(--chart-3)" },
+    { name: "O₃", value: pollutants.o3, color: "var(--chart-4)" },
+    { name: "CO", value: pollutants.co, color: "var(--chart-5)" },
   ];
 
   return (
@@ -42,35 +44,35 @@ export default function PollutantChart({ pollutants }: PollutantChartProps) {
       </h3>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={chartData}>
-          <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
           <XAxis
             dataKey="name"
-            stroke="oklch(var(--muted-foreground))"
+            stroke="var(--muted-foreground)"
             style={{ fontSize: "12px" }}
           />
           <YAxis
-            stroke="oklch(var(--muted-foreground))"
+            stroke="var(--muted-foreground)"
             style={{ fontSize: "12px" }}
             label={{
               value: "μg/m³",
               angle: -90,
               position: "insideLeft",
-              style: { fill: "oklch(var(--muted-foreground))" },
+              style: { fill: "var(--muted-foreground)" },
             }}
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: "oklch(var(--card))",
-              border: "1px solid oklch(var(--border))",
+              backgroundColor: "var(--card)",
+              border: "1px solid var(--border)",
               borderRadius: "8px",
-              color: "oklch(var(--foreground))",
+              color: "(--foreground)",
             }}
           />
-          <Bar
-            dataKey="value"
-            fill="oklch(var(--primary))"
-            radius={[8, 8, 0, 0]}
-          />
+          <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+            {chartData.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
     </div>

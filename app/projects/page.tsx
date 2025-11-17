@@ -10,6 +10,7 @@ import {
   ConsultingProject,
 } from "@/data/consultingProjects";
 import { AirQualityData } from "@/types";
+import { Zap } from "lucide-react";
 
 export default function ProjectsPage() {
   const [currentAQI, setCurrentAQI] = useState<number | null>(null);
@@ -85,22 +86,10 @@ export default function ProjectsPage() {
 
       {/* Current Context Banner */}
       {!loading && currentAQI !== null && (
-        <div className="bg-secondary/10 border border-secondary/20 rounded-xl p-4 mb-6">
+        <div className="bg-accent/10 border border-accent/20 rounded-xl p-4 mb-6">
           <div className="flex items-start gap-3">
-            <div className="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center shrink-0">
-              <svg
-                className="w-5 h-5 text-secondary"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
+            <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center shrink-0">
+              <Zap className="text-muted-foreground"></Zap>
             </div>
             <div>
               <p className="font-medium text-foreground mb-1">
@@ -108,8 +97,9 @@ export default function ProjectsPage() {
               </p>
               <p className="text-sm text-muted-foreground">
                 There {relevantCount === 1 ? "is " : "are "}
-                {relevantCount} {relevantCount === 1 ? "project" : "projects"}{" "}
-                relevant to current conditions
+                <span className="font-semibold">{relevantCount}</span> past{" "}
+                {relevantCount === 1 ? "project" : "projects"} relevant to
+                current conditions
                 {relevantCount > 0 && " (highlighted below)"}
               </p>
             </div>
