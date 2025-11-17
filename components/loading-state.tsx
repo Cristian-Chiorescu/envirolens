@@ -1,5 +1,3 @@
-// components/LoadingState.tsx
-
 export default function LoadingState() {
   return (
     <div className="flex items-center justify-center h-96">

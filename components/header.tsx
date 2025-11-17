@@ -3,7 +3,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
-  const pathname = usePathname(); // ADD THIS
+  const pathname = usePathname();
 
   return (
     <header className="border-b border-border bg-card">

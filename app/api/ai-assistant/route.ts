@@ -23,7 +23,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Build system prompt with both air quality and projects context
     const airQualityContext = context?.airQuality
       ? `Current Calgary Air Quality Data:\n${JSON.stringify(
           context.airQuality,

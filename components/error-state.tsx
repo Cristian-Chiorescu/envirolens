@@ -1,5 +1,3 @@
-// components/ErrorState.tsx
-
 interface ErrorStateProps {
   message: string;
   onRetry: () => void;

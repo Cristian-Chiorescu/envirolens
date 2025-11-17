@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import type { AirQualityData } from "@/types";
+import type { AirQualityData, AQICNResponse } from "@/types";
 
 const AQICN_TOKEN = process.env.AQICN_API_TOKEN || "";
 
@@ -33,7 +33,7 @@ export async function GET() {
   }
 }
 
-function transformAQICNData(data: any): AirQualityData {
+function transformAQICNData(data: AQICNResponse): AirQualityData {
   const aqi = data.data.aqi;
   const iaqi = data.data.iaqi;
 

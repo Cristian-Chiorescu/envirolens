@@ -43,3 +43,75 @@ export interface FeatureCard {
   title: string;
   description: string;
 }
+
+export interface AQICNPollutantValue {
+  v: number;
+}
+
+export interface AQICNIAQI {
+  co?: AQICNPollutantValue;
+  h?: AQICNPollutantValue;
+  no2?: AQICNPollutantValue;
+  o3?: AQICNPollutantValue;
+  p?: AQICNPollutantValue;
+  pm25?: AQICNPollutantValue;
+  pm10?: AQICNPollutantValue;
+  so2?: AQICNPollutantValue;
+  t?: AQICNPollutantValue;
+  w?: AQICNPollutantValue;
+  wg?: AQICNPollutantValue;
+}
+
+export interface AQICNCity {
+  geo: [number, number];
+  name: string;
+  url: string;
+  location: string;
+}
+
+export interface AQICNTime {
+  s: string;
+  tz: string;
+  v: number;
+  iso: string;
+}
+
+export interface AQICNAttribution {
+  url: string;
+  name: string;
+  logo?: string;
+}
+
+export interface AQICNForecastDay {
+  avg: number;
+  day: string;
+  max: number;
+  min: number;
+}
+
+export interface AQICNForecast {
+  daily: {
+    pm10?: AQICNForecastDay[];
+    pm25?: AQICNForecastDay[];
+    uvi?: AQICNForecastDay[];
+  };
+}
+
+export interface AQICNData {
+  aqi: number;
+  idx: number;
+  attributions: AQICNAttribution[];
+  city: AQICNCity;
+  dominentpol: string;
+  iaqi: AQICNIAQI;
+  time: AQICNTime;
+  forecast: AQICNForecast;
+  debug: {
+    sync: string;
+  };
+}
+
+export interface AQICNResponse {
+  status: string;
+  data: AQICNData;
+}

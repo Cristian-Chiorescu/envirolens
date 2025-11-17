@@ -1,4 +1,3 @@
-// app/projects/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -18,7 +17,6 @@ export default function ProjectsPage() {
   const [selectedRegulation, setSelectedRegulation] = useState("All");
   const [loading, setLoading] = useState(true);
 
-  // Fetch current air quality to show contextual projects
   useEffect(() => {
     async function fetchAirQuality() {
       try {
@@ -36,14 +34,11 @@ export default function ProjectsPage() {
     fetchAirQuality();
   }, []);
 
-  // Filter projects based on current AQI and user selections
   const filteredProjects = consultingProjects.filter((project) => {
-    // Filter by sector
     if (selectedSector !== "All" && project.sector !== selectedSector) {
       return false;
     }
 
-    // Filter by regulation
     if (
       selectedRegulation !== "All" &&
       !project.tags.includes(selectedRegulation)
@@ -54,7 +49,6 @@ export default function ProjectsPage() {
     return true;
   });
 
-  // Sort projects by relevance to current AQI
   const sortedProjects = [...filteredProjects].sort((a, b) => {
     if (!currentAQI) return 0;
 
@@ -66,7 +60,6 @@ export default function ProjectsPage() {
     return 0;
   });
 
-  // Count how many projects are relevant to current conditions
   const relevantCount = currentAQI
     ? filteredProjects.filter((p) => isProjectRelevantToAQI(p, currentAQI))
         .length
@@ -74,7 +67,6 @@ export default function ProjectsPage() {
 
   return (
     <DashboardLayout>
-      {/* Page Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-2">
           Project Knowledge Base
@@ -84,7 +76,6 @@ export default function ProjectsPage() {
         </p>
       </div>
 
-      {/* Current Context Banner */}
       {!loading && currentAQI !== null && (
         <div className="bg-accent/10 border border-accent/20 rounded-xl p-4 mb-6">
           <div className="flex items-start gap-3">
@@ -107,7 +98,6 @@ export default function ProjectsPage() {
         </div>
       )}
 
-      {/* Filters */}
       <ProjectFilters
         selectedSector={selectedSector}
         selectedRegulation={selectedRegulation}
@@ -115,7 +105,6 @@ export default function ProjectsPage() {
         onRegulationChange={setSelectedRegulation}
       />
 
-      {/* Projects Grid */}
       {sortedProjects.length > 0 ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">
           {sortedProjects.map((project) => (
@@ -123,7 +112,7 @@ export default function ProjectsPage() {
               key={project.id}
               className={
                 currentAQI && isProjectRelevantToAQI(project, currentAQI)
-                  ? "transition ring-6 ring-secondary/50 rounded-xl inset-shadow-sm inset-shadow-accent hover:shadow-xl shadow-accent/50"
+                  ? "transition ring-6 ring-secondary/50 rounded-xl inset-shadow-sm inset-shadow-accent shadow-lg hover:shadow-xl shadow-accent/50"
                   : ""
               }
             >
@@ -142,7 +131,6 @@ export default function ProjectsPage() {
   );
 }
 
-// Helper function to check if project is relevant to current AQI
 function isProjectRelevantToAQI(
   project: ConsultingProject,
   currentAQI: number
@@ -151,7 +139,6 @@ function isProjectRelevantToAQI(
   return currentAQI >= min && currentAQI <= max;
 }
 
-// Helper function to get AQI status
 function getAQIStatus(aqi: number): string {
   if (aqi <= 50) return "Good";
   if (aqi <= 100) return "Moderate";

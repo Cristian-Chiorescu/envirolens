@@ -8,7 +8,6 @@ export default function Home() {
       <div className="container mx-auto px-4 py-12 md:py-20">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 md:mb-16">
-            {/* replace full logo with just icon logo */}
             <div className="flex justify-center mb-8">
               <Image
                 src="/envirolens-logo.png"
@@ -34,7 +33,6 @@ export default function Home() {
 
           <HomeFeatureCards></HomeFeatureCards>
 
-          {/* Bottom Info Section. Also replace with shadcn card*/}
           <div className="bg-secondary/10 border border-border rounded-xl p-8 text-center">
             <h2 className="text-2xl font-semibold mb-4 text-foreground">
               Built for Environmental Consultants

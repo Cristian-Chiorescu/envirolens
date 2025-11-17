@@ -46,7 +46,6 @@ export default function HomeFeatureCards() {
             key={i}
             className="p-8 group hover:border-primary/50 hover:shadow-lg transition-all duration-300 gap-4"
           >
-            {/*change hover effects*/}
             <div
               className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-colors bg-${feature.color}/10 text-${feature.color} `}
             >

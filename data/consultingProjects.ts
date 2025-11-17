@@ -1,9 +1,7 @@
-// data/consultingProjects.ts
-
 export interface ConsultingProject {
   id: string;
   title: string;
-  client: string; // Anonymized
+  client: string;
   sector: "Oil & Gas" | "Mining" | "Hydrogen" | "Clean Fuels" | "Manufacturing";
   jurisdiction: "Alberta" | "BC" | "Federal";
   serviceArea:
@@ -11,8 +9,8 @@ export interface ConsultingProject {
     | "Regulatory Pathway"
     | "Energy Management"
     | "Sustainability Disclosure";
-  tags: string[]; // TIER, OBPS, NPRI, etc.
-  relevantAQIRange: string; // e.g., "0-50" or "50-100"
+  tags: string[];
+  relevantAQIRange: string;
   problemSummary: string;
   approachSummary: string;
   outcome: string;

@@ -1,5 +1,3 @@
-// components/PollutantChart.tsx
-
 import {
   BarChart,
   Bar,
@@ -28,7 +26,6 @@ interface PollutantChartProps {
 }
 
 export default function PollutantChart({ pollutants }: PollutantChartProps) {
-  // Transform pollutant object into array format for chart
   const chartData: PollutantDataPoint[] = [
     { name: "PM2.5", value: pollutants.pm25, color: "var(--chart-1)" },
     { name: "PM10", value: pollutants.pm10, color: "var(--chart-2)" },

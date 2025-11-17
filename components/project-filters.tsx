@@ -1,5 +1,3 @@
-// components/ProjectFilters.tsx
-
 interface ProjectFiltersProps {
   selectedSector: string;
   selectedRegulation: string;
@@ -26,7 +24,6 @@ export default function ProjectFilters({
   return (
     <div className="bg-card border border-border rounded-xl p-4 mb-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Sector Filter */}
         <div>
           <label className="text-sm font-medium text-foreground mb-2 block">
             Sector
@@ -44,7 +41,6 @@ export default function ProjectFilters({
           </select>
         </div>
 
-        {/* Regulation Filter */}
         <div>
           <label className="text-sm font-medium text-foreground mb-2 block">
             Regulation

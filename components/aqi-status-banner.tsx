@@ -1,5 +1,3 @@
-// components/AQIStatusBanner.tsx
-
 import { Check, TriangleAlert, OctagonAlert } from "lucide-react";
 
 interface AQIStatusBannerProps {
@@ -8,7 +6,6 @@ interface AQIStatusBannerProps {
 }
 
 export default function AQIStatusBanner({ aqi, status }: AQIStatusBannerProps) {
-  // Determine background color based on AQI value
   const bgColor =
     aqi <= 50
       ? "bg-accent/10 border-accent/20"
@@ -16,7 +13,6 @@ export default function AQIStatusBanner({ aqi, status }: AQIStatusBannerProps) {
       ? "bg-muted/10 border-muted"
       : "bg-destructive/10 border-destructive/20";
 
-  // Determine icon based on AQI value
   const icon =
     aqi <= 50 ? (
       <Check></Check>
@@ -26,7 +22,6 @@ export default function AQIStatusBanner({ aqi, status }: AQIStatusBannerProps) {
       <OctagonAlert></OctagonAlert>
     );
 
-  // Get health message based on AQI value
   const getMessage = () => {
     if (aqi <= 50) {
       return "Air quality is satisfactory, and air pollution poses little or no risk. Outdoor activities are safe for all groups.";

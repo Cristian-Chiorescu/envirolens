@@ -5,7 +5,6 @@ export default function Footer() {
     <footer className="border-t border-border bg-card mt-auto py-10">
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Left side - Branding */}
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded flex items-center justify-center">
               <Image
@@ -20,7 +19,6 @@ export default function Footer() {
             </span>
           </div>
 
-          {/* Right side - Links */}
           <div className="flex items-center gap-6">
             <a
               href="https://github.com/cristian-chiorescu"
@@ -72,7 +70,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Attribution */}
         <div className="mt-4 pt-4 border-t border-border text-center">
           <p className="text-xs text-muted-foreground">
             Built by{" "}

@@ -1,5 +1,3 @@
-// components/AQITrendChart.tsx
-
 import {
   LineChart,
   Line,

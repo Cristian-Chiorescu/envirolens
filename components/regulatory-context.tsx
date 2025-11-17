@@ -1,5 +1,3 @@
-// components/RegulatoryContext.tsx
-
 export default function RegulatoryContext() {
   const regulations = [
     {

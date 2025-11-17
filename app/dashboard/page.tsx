@@ -1,8 +1,3 @@
-// app/dashboard/page.tsx
-
-//componentize page/ fix colors on charts
-
-// app/dashboard/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -17,7 +12,7 @@ import ErrorState from "@/components/error-state";
 import { AirQualityData } from "../../types";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
-import { FileText } from "lucide-react";
+import { ChevronRight, FileText } from "lucide-react";
 
 export default function DashboardPage() {
   const [data, setData] = useState<AirQualityData | null>(null);
@@ -26,7 +21,6 @@ export default function DashboardPage() {
 
   useEffect(() => {
     fetchAirQuality();
-    // Refresh every 5 minutes
     const interval = setInterval(fetchAirQuality, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
@@ -46,7 +40,6 @@ export default function DashboardPage() {
     }
   }
 
-  // Loading state
   if (loading) {
     return (
       <DashboardLayout>
@@ -55,7 +48,6 @@ export default function DashboardPage() {
     );
   }
 
-  // Error state
   if (error || !data) {
     return (
       <DashboardLayout>
@@ -67,12 +59,10 @@ export default function DashboardPage() {
     );
   }
 
-  // Generate historical trend data (mock for now)
   const historicalData = generateMockHistoricalData(data.aqi);
 
   return (
     <DashboardLayout>
-      {/* Page Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-2">
           Calgary Air Quality Dashboard
@@ -83,7 +73,6 @@ export default function DashboardPage() {
         </p>
       </div>
 
-      {/* Metric Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <MetricCard
           title="Air Quality Index"
@@ -112,12 +101,10 @@ export default function DashboardPage() {
         />
       </div>
 
-      {/* Status Banner */}
       <div className="mb-8">
         <AQIStatusBanner aqi={data.aqi} status={data.status} />
       </div>
 
-      {/* Link to Projects */}
       <Link href="/projects">
         <div className="bg-secondary/5 border border-secondary/20 rounded-xl p-6 mb-8 hover:bg-secondary/15 transition duration-300 cursor-pointer group">
           <div className="flex items-center justify-between">
@@ -131,36 +118,21 @@ export default function DashboardPage() {
                 consulting work.
               </p>
             </div>
-            <svg
-              className="w-6 h-6 text-secondary group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
+            <ChevronRight className="text-primary transition duration-300 group-hover:translate-x-1"></ChevronRight>
           </div>
         </div>
       </Link>
 
-      {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <AQITrendChart data={historicalData} />
         <PollutantChart pollutants={data.pollutants} />
       </div>
 
-      {/* Regulatory Context */}
       <RegulatoryContext />
     </DashboardLayout>
   );
 }
 
-// Helper function to generate mock historical data
 function generateMockHistoricalData(currentAQI: number) {
   const data = [];
   const now = new Date();

@@ -1,9 +1,15 @@
-// components/FloatingAIChat.tsx
 "use client";
 
 import { useState, useRef, useEffect } from "react";
 import { AirQualityData } from "@/types";
 import { consultingProjects } from "@/data/consultingProjects";
+import {
+  X,
+  MessageSquareMore,
+  ChevronDown,
+  Zap,
+  SendHorizonal,
+} from "lucide-react";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -23,7 +29,6 @@ export default function FloatingAIChat({
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Only scroll when messages change AND chat is open
   useEffect(() => {
     if (isOpen && messages.length > 0) {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -39,7 +44,6 @@ export default function FloatingAIChat({
       content: input.trim(),
     };
 
-    // Build the new history synchronously
     const updatedMessages = [...messages, userMessage];
 
     setMessages(updatedMessages);
@@ -47,8 +51,7 @@ export default function FloatingAIChat({
     setIsLoading(true);
 
     try {
-      // Filter projects relevant to current AQI
-      const [min, max] = [0, 300]; // Default range
+      const [min, max] = [0, 300];
       const relevantProjects = consultingProjects.filter((project) => {
         const [pMin, pMax] = project.relevantAQIRange.split("-").map(Number);
         return airQualityData.aqi >= pMin && airQualityData.aqi <= pMax;
@@ -58,10 +61,10 @@ export default function FloatingAIChat({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          messages: updatedMessages, // 👈 send full history
+          messages: updatedMessages,
           context: {
             airQuality: airQualityData,
-            relevantProjects: relevantProjects, // 👈 your AQ data}
+            relevantProjects: relevantProjects,
           },
         }),
       });
@@ -92,43 +95,16 @@ export default function FloatingAIChat({
 
   return (
     <>
-      {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-6 right-6 w-14 h-14 bg-primary text-primary-foreground rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center z-50"
         aria-label="Toggle AI Assistant"
       >
         {isOpen ? (
-          // Close icon
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          <X></X>
         ) : (
-          // Chat icon with notification badge if there are messages
           <div className="relative">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-              />
-            </svg>
+            <MessageSquareMore></MessageSquareMore>
             {messages.length > 0 && (
               <span className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full"></span>
             )}
@@ -136,10 +112,8 @@ export default function FloatingAIChat({
         )}
       </button>
 
-      {/* Chat Window */}
       {isOpen && (
         <div className="fixed bottom-24 right-6 w-80 md:w-96 h-130 md:h-150 bg-card border border-border rounded-xl shadow-2xl overflow-hidden flex flex-col z-50 animate-in slide-in-from-bottom-5 duration-300">
-          {/* Header */}
           <div className="bg-primary text-primary-foreground p-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
@@ -149,40 +123,15 @@ export default function FloatingAIChat({
               onClick={() => setIsOpen(false)}
               className="hover:bg-primary-foreground/20 rounded p-1 transition-colors"
             >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
+              <ChevronDown></ChevronDown>
             </button>
           </div>
 
-          {/* Messages Container */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-muted/30">
             {messages.length === 0 && (
               <div className="text-center text-muted-foreground py-8 px-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <svg
-                    className="w-6 h-6 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
+                  <Zap className="text-primary"></Zap>
                 </div>
                 <p className="font-medium mb-2">Hi! I'm your AI assistant</p>
                 <p className="text-sm mb-4">
@@ -253,7 +202,6 @@ export default function FloatingAIChat({
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input Form */}
           <form
             onSubmit={handleSendMessage}
             className="border-t border-border p-3 bg-card"
@@ -272,19 +220,7 @@ export default function FloatingAIChat({
                 disabled={isLoading || !input.trim()}
                 className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium"
               >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                  />
-                </svg>
+                <SendHorizonal className="w-4 h-4"></SendHorizonal>
               </button>
             </div>
           </form>
