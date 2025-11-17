@@ -15,7 +15,6 @@ export async function POST(req: Request) {
         relevantProjects?: unknown;
       };
     };
-
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json(
         { error: "Messages array is required" },

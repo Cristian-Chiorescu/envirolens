@@ -12,7 +12,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     "Clean Fuels": "bg-chart-4/20 text-chart-4 border-chart-4/20",
     Manufacturing: "bg-chart-5/20 text-chart-5 border-chart-5/20",
   };
-
   return (
     <div className="h-full bg-transparent border border-border rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:border-primary/30">
       <div className="mb-4">

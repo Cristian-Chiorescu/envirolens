@@ -2,7 +2,6 @@ interface ErrorStateProps {
   message: string;
   onRetry: () => void;
 }
-
 export default function ErrorState({ message, onRetry }: ErrorStateProps) {
   return (
     <div className="flex items-center justify-center h-96">

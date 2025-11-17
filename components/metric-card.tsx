@@ -19,7 +19,6 @@ export default function MetricCard({
     secondary: "border-secondary/20 bg-secondary/5",
     default: "border-border bg-card",
   };
-
   const trendIcons = {
     up: "↗",
     down: "↘",

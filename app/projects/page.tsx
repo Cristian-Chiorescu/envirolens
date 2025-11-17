@@ -97,7 +97,6 @@ export default function ProjectsPage() {
           </div>
         </div>
       )}
-
       <ProjectFilters
         selectedSector={selectedSector}
         selectedRegulation={selectedRegulation}

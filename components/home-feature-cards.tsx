@@ -36,7 +36,6 @@ const featureCardList: FeatureCard[] = [
       "Connect environmental data to Alberta regulations like TIER, EPEA, and NPRI",
   },
 ];
-
 export default function HomeFeatureCards() {
   return (
     <div className="grid md:grid-cols-3 gap-6 mb-16">

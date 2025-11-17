@@ -31,7 +31,6 @@ export default function AQIStatusBanner({ aqi, status }: AQIStatusBannerProps) {
     }
     return "Members of sensitive groups may experience health effects. The general public is less likely to be affected.";
   };
-
   return (
     <div className={`rounded-xl border p-6 ${bgColor}`}>
       <div className="flex items-start gap-4">

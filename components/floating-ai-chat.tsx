@@ -198,7 +198,6 @@ export default function FloatingAIChat({
                 </div>
               </div>
             )}
-
             <div ref={messagesEndRef} />
           </div>
 

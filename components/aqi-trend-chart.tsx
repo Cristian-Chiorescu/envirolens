@@ -12,7 +12,6 @@ interface TrendDataPoint {
   time: string;
   aqi: number;
 }
-
 interface AQITrendChartProps {
   data: TrendDataPoint[];
 }

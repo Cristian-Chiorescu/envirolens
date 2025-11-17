@@ -110,7 +110,6 @@ export interface AQICNData {
     sync: string;
   };
 }
-
 export interface AQICNResponse {
   status: string;
   data: AQICNData;

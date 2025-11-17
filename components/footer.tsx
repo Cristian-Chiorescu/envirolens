@@ -18,7 +18,6 @@ export default function Footer() {
               EnviroLens • Environmental Intelligence Platform
             </span>
           </div>
-
           <div className="flex items-center gap-6">
             <a
               href="https://github.com/cristian-chiorescu"

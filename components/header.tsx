@@ -19,7 +19,6 @@ export default function Header() {
               width={30}
               height={30}
             ></Image>
-
             <span className="text-xl font-bold text-foreground">
               EnviroLens
             </span>

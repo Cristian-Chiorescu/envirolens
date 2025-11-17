@@ -16,7 +16,6 @@ export default function RegulatoryContext() {
         "National Pollutant Release Inventory requires annual reporting of pollutant releases and transfers",
     },
   ];
-
   return (
     <div className="bg-muted/50 border border-border rounded-xl p-6">
       <h3 className="text-lg font-semibold mb-3 text-foreground">

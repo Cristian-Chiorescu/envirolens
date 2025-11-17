@@ -73,7 +73,6 @@ function generateMockData(): AirQualityData {
     },
   };
 }
-
 function getStatus(aqi: number): AirQualityData["status"] {
   if (aqi <= 50) return "Good";
   if (aqi <= 100) return "Moderate";

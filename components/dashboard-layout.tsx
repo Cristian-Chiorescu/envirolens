@@ -14,7 +14,6 @@ export default function DashboardLayout({
   const [airQualityData, setAirQualityData] = useState<AirQualityData | null>(
     null
   );
-
   useEffect(() => {
     async function fetchAirQuality() {
       try {

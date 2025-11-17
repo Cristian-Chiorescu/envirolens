@@ -147,6 +147,5 @@ function generateMockHistoricalData(currentAQI: number) {
       aqi: Math.round(aqi),
     });
   }
-
   return data;
 }

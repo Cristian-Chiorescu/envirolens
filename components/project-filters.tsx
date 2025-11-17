@@ -40,7 +40,6 @@ export default function ProjectFilters({
             ))}
           </select>
         </div>
-
         <div>
           <label className="text-sm font-medium text-foreground mb-2 block">
             Regulation

@@ -350,15 +350,15 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ### Dashboard
 
-![Dashboard showing real-time Calgary air quality metrics, charts, and health indicators](/dashboard.png)
+![Dashboard showing real-time Calgary air quality metrics, charts, and health indicators](./public/dashboard.png)
 
 ### AI Assistant
 
-![Floating chat interface with AI providing compliance guidance](/ai-chat.png)
+![Floating chat interface with AI providing compliance guidance](./public/ai-chat.png)
 
 ### Projects Knowledge Base
 
-![Filterable project cards with contextual highlighting based on current conditions](/projects.png)
+![Filterable project cards with contextual highlighting based on current conditions](./public/projects.png)
 
 ---
 

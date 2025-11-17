@@ -24,7 +24,6 @@ interface PollutantChartProps {
     co: number;
   };
 }
-
 export default function PollutantChart({ pollutants }: PollutantChartProps) {
   const chartData: PollutantDataPoint[] = [
     { name: "PM2.5", value: pollutants.pm25, color: "var(--chart-1)" },
