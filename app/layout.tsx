@@ -15,6 +15,21 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "EnviroLens",
   description: "Environmental data dashboard with AI-powered insights",
+  openGraph: {
+    title: "EnviroLens | Real-time insights. Past learnings. AI assistance.",
+    description: "Environmental data dashboard with AI-powered insights",
+    url: "https://envirolens.vercel.app/",
+    siteName: "EnviroLens",
+    images: [
+      {
+        url: "https://envirolens.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

@@ -11,7 +11,7 @@ import {
 
 interface PollutantDataPoint {
   name: string;
-  value: number;
+  Value: number;
   color: string;
 }
 
@@ -26,11 +26,11 @@ interface PollutantChartProps {
 }
 export default function PollutantChart({ pollutants }: PollutantChartProps) {
   const chartData: PollutantDataPoint[] = [
-    { name: "PM2.5", value: pollutants.pm25, color: "var(--chart-1)" },
-    { name: "PM10", value: pollutants.pm10, color: "var(--chart-2)" },
-    { name: "NO₂", value: pollutants.no2, color: "var(--chart-3)" },
-    { name: "O₃", value: pollutants.o3, color: "var(--chart-4)" },
-    { name: "CO", value: pollutants.co, color: "var(--chart-5)" },
+    { name: "PM2.5", Value: pollutants.pm25, color: "var(--chart-1)" },
+    { name: "PM10", Value: pollutants.pm10, color: "var(--chart-2)" },
+    { name: "NO₂", Value: pollutants.no2, color: "var(--chart-3)" },
+    { name: "O₃", Value: pollutants.o3, color: "var(--chart-4)" },
+    { name: "CO", Value: pollutants.co, color: "var(--chart-5)" },
   ];
 
   return (
@@ -65,7 +65,7 @@ export default function PollutantChart({ pollutants }: PollutantChartProps) {
               color: "(--foreground)",
             }}
           />
-          <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+          <Bar dataKey="Value" radius={[8, 8, 0, 0]}>
             {chartData.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={entry.color} />
             ))}
