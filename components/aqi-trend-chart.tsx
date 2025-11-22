@@ -22,7 +22,7 @@ export default function AQITrendChart({ data }: AQITrendChartProps) {
       <h3 className="text-lg font-semibold mb-4 text-foreground">
         AQI Trend (24 Hours)
       </h3>
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={250}>
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
           <XAxis
@@ -33,6 +33,7 @@ export default function AQITrendChart({ data }: AQITrendChartProps) {
           <YAxis
             stroke="var(--muted-foreground)"
             style={{ fontSize: "12px" }}
+            width={20}
           />
           <Tooltip
             contentStyle={{

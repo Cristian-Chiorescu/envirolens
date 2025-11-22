@@ -38,7 +38,7 @@ export default function PollutantChart({ pollutants }: PollutantChartProps) {
       <h3 className="text-lg font-semibold mb-4 text-foreground">
         Pollutant Levels
       </h3>
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={250}>
         <BarChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
           <XAxis
@@ -55,6 +55,7 @@ export default function PollutantChart({ pollutants }: PollutantChartProps) {
               position: "insideLeft",
               style: { fill: "var(--muted-foreground)" },
             }}
+            width={50}
           />
           <Tooltip
             contentStyle={{
